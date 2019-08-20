@@ -28,9 +28,6 @@ matrix:
     env: BUILD_TYPE=Debug GENERATOR="Unix Makefiles"
   - os: osx
     env: BUILD_TYPE=RelWithDebugInfo GENERATOR="Unix Makefiles"
-
-jobs:
-  include:
   - stage: second
     os: linux
     dist: trusty
