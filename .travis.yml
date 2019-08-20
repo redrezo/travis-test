@@ -2,11 +2,12 @@ stages:
   - first
   - second
 env:
-  - BUILD_TYPE=Release
-  - BUILD_TYPE=Debug
-  - BUILD_TYPE=RelWithDebugInfo
-  - GENERATOR="Unix Makefiles"
-  - GENERATOR="Visual Studio 15 2017 Win64"
+  - BUILD_TYPE=Release GENERATOR="Unix Makefiles"
+  - BUILD_TYPE=Debug GENERATOR="Unix Makefiles"
+  - BUILD_TYPE=RelWithDebugInfo GENERATOR="Unix Makefiles"
+  - BUILD_TYPE=Release GENERATOR="Visual Studio 15 2017 Win64"
+  - BUILD_TYPE=Debug GENERATOR="Visual Studio 15 2017 Win64"
+  - BUILD_TYPE=RelWithDebugInfo GENERATOR="Visual Studio 15 2017 Win64"
 os:
   - windows
   - osx
@@ -23,10 +24,19 @@ matrix:
   include:
   - stage: first
     os: windows
-    env: GENERATOR="Visual Studio 15 2017 Win64"
+    env:
+    - BUILD_TYPE=Release GENERATOR="Visual Studio 15 2017 Win64"
+    - BUILD_TYPE=Debug GENERATOR="Visual Studio 15 2017 Win64"
+    - BUILD_TYPE=RelWithDebugInfo GENERATOR="Visual Studio 15 2017 Win64"
   - stage: first
     os: linux
-    env: GENERATOR="Unix Makefiles"
+    env:
+    - BUILD_TYPE=Release GENERATOR="Unix Makefiles"
+    - BUILD_TYPE=Debug GENERATOR="Unix Makefiles"
+    - BUILD_TYPE=RelWithDebugInfo GENERATOR="Unix Makefiles"
   - stage: first
     os: osx
-    env: GENERATOR="Unix Makefiles"
+    env:
+    - BUILD_TYPE=Release GENERATOR="Unix Makefiles"
+    - BUILD_TYPE=Debug GENERATOR="Unix Makefiles"
+    - BUILD_TYPE=RelWithDebugInfo GENERATOR="Unix Makefiles"
