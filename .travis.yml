@@ -5,6 +5,8 @@ env:
   - BUILD_TYPE=Release
   - BUILD_TYPE=Debug
   - BUILD_TYPE=RelWithDebugInfo
+  - GENERATOR="Unix Makefiles"
+  - GENERATOR="Visual Studio 15 2017 Win64"
 os:
   - windows
   - osx
@@ -18,13 +20,13 @@ script:
 - echo "executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}"
   
 matrix:
-  - include:
-    - stage: first
-      os: windows
-      env: GENERATOR="Visual Studio 15 2017 Win64"
-    - stage: first
-      os: linux
-      env: GENERATOR="Unix Makefiles"
-    - stage: first
-      os: osx
-      env: GENERATOR="Unix Makefiles"
+  include:
+  - stage: first
+    os: windows
+    env: GENERATOR="Visual Studio 15 2017 Win64"
+  - stage: first
+    os: linux
+    env: GENERATOR="Unix Makefiles"
+  - stage: first
+    os: osx
+    env: GENERATOR="Unix Makefiles"
