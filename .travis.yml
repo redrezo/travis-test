@@ -4,6 +4,7 @@ stages:
 env:
   - BUILD_TYPE=Release
   - BUILD_TYPE=Debug
+  - BUILD_TYPE=RelWithDebugInfo
 os:
   - windows
   - osx
