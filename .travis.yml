@@ -1,13 +1,14 @@
 stages:
   - first
   - second
-  
+
+stage: first
 language: cpp
   
 script: 
 - env
 - echo "executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}"
-  
+
 matrix:
   include:
   - os: windows
