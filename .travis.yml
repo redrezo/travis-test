@@ -15,7 +15,7 @@ name: "Build natives"
   
 script: 
 - env
-- echo 'executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}'
+- echo "executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}"
   
 jobs:
   - include:
