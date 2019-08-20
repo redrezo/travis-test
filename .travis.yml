@@ -1,19 +1,17 @@
 stages:
   - first
   - second
-  
 env:
   matrix:
     - BUILD_TYPE=Release
     - BUILD_TYPE=Debug
-
 os:
   - windows
   - osx
   - linux
   
 language: cpp
-name: "${os} ${BUILD_TYPE}
+name: "${os} ${BUILD_TYPE}"
   
 script: echo 'executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}'
   
