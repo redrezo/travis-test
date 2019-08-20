@@ -7,7 +7,7 @@ language: cpp
   
 script: 
 - env
-- echo "executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}"
+- echo "executing common build script ${TRAVIS_OS_NAME} ${BUILD_TYPE} with ${GENERATOR}"
 
 matrix:
   include:
