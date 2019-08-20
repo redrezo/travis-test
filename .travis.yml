@@ -11,25 +11,27 @@ script:
 
 install:
 - |
-case "${TRAVIS_OS_NAME}" in
-  windows)
-    choco install awscli
-    choco install cmake --version 3.13.0
-    choco install jdk8
-    choco install visualstudio2017buildtools
-    choco install visualstudio2017-workload-vctools
-    choco install visualstudio2017-workload-nativedesktop
-  ;;
-  linux)
-    sudo apt-get install -y freeglut3-dev
-    pip install --user awscli
-    pip install --user cmake=3.13.0
-  ;;
-  osx)
-    brew desc cmake
-    brew info cmake
-  ;;
-esac
+  set -ex
+  case "${TRAVIS_OS_NAME}" in
+    windows)
+      choco install awscli
+      choco install cmake --version 3.13.0
+      choco install jdk8
+      choco install visualstudio2017buildtools
+      choco install visualstudio2017-workload-vctools
+      choco install visualstudio2017-workload-nativedesktop
+    ;;
+    linux)
+      sudo apt-get install -y freeglut3-dev
+      pip install --user awscli
+      pip install --user cmake=3.13.0
+    ;;
+    osx)
+      brew desc cmake
+      brew info cmake
+    ;;
+  esac
+  set +ex
 
 matrix:
   include:
