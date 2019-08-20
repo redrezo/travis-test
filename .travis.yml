@@ -17,7 +17,7 @@ script:
 - env
 - echo "executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}"
   
-jobs:
+matrix:
   - include:
     - stage: first
       os: windows
