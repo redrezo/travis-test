@@ -10,25 +10,21 @@ os:
   - linux
   
 language: cpp
-name: "${os} ${BUILD_TYPE}"
+name: "Build natives"
   
 script: echo 'executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}'
   
-jobs:
+matrix:
+  include:
+  - os: windows
+    env: GENERATOR="Visual Studio 15 2017 Win64"
+  - os: linux
+    env: GENERATOR="Unix Makefiles"
+  - os: osx
+    env: GENERATOR="Unix Makefiles"
+  
+matrix:
   - include:
-    - stage: first
-      os: windows
-      env:
-        GENERATOR="Visual Studio 15 2017 Win64"
-    - stage: first
-      os: osx
-      env:
-        GENERATOR="Unix Makefiles"
-    - stage: first
-      os: linux
-      dist: trusty
-      env:
-        GENERATOR="Unix Makefiles"
     - stage: second
       os: linux
       dist: trusty
