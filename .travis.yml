@@ -2,9 +2,8 @@ stages:
   - first
   - second
 env:
-  matrix:
-    - BUILD_TYPE=Release
-    - BUILD_TYPE=Debug
+  - BUILD_TYPE=Release
+  - BUILD_TYPE=Debug
 os:
   - windows
   - osx
