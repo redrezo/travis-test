@@ -22,18 +22,12 @@ jobs:
     - stage: first
       os: windows
       env:
-        global:
-        - GENERATOR="Visual Studio 15 2017 Win64"
-        matrix:
-        - BUILD_TYPE=Debug
-        - BUILD_TYPE=Release
-        - BUILD_TYPE=RelWithDebugInfo
+      - BUILD_TYPE=Debug GENERATOR="Visual Studio 15 2017 Win64"
+      - BUILD_TYPE=Release GENERATOR="Visual Studio 15 2017 Win64"
+      - BUILD_TYPE=RelWithDebugInfo GENERATOR="Visual Studio 15 2017 Win64"
     - stage: first
       os: linux
       env:
-        global:
-        - GENERATOR="Unix Makefiles"
-        matrix:
-        - BUILD_TYPE=Debug
-        - BUILD_TYPE=Release
-        - BUILD_TYPE=RelWithDebugInfo
+      - BUILD_TYPE=Debug GENERATOR="Unix Makefiles"
+      - BUILD_TYPE=Release GENERATOR="Unix Makefiles"
+      - BUILD_TYPE=RelWithDebugInfo GENERATOR="Unix Makefiles"
