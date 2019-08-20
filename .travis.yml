@@ -9,6 +9,28 @@ script:
 - env
 - echo "executing common build script ${TRAVIS_OS_NAME} ${BUILD_TYPE} with ${GENERATOR}"
 
+install:
+- |
+case "${TRAVIS_OS_NAME}" in
+  windows)
+    choco install awscli
+    choco install cmake --version 3.13.0
+    choco install jdk8
+    choco install visualstudio2017buildtools
+    choco install visualstudio2017-workload-vctools
+    choco install visualstudio2017-workload-nativedesktop
+  ;;
+  linux)
+    sudo apt-get install -y freeglut3-dev
+    pip install --user awscli
+    pip install --user cmake=3.13.0
+  ;;
+  osx)
+    brew desc cmake
+    brew info cmake
+  ;;
+esac
+
 matrix:
   include:
   - os: windows
@@ -18,10 +40,13 @@ matrix:
   - os: windows
     env: BUILD_TYPE=RelWithDebugInfo GENERATOR="Visual Studio 15 2017 Win64"
   - os: linux
+    dist: trusty
     env: BUILD_TYPE=Release GENERATOR="Unix Makefiles"
   - os: linux
+    dist: trusty
     env: BUILD_TYPE=Debug GENERATOR="Unix Makefiles"
   - os: linux
+    dist: trusty
     env: BUILD_TYPE=RelWithDebugInfo GENERATOR="Unix Makefiles"
   - os: osx
     env: BUILD_TYPE=Release GENERATOR="Unix Makefiles"
