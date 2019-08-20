@@ -5,16 +5,17 @@ stages:
 env:
   matrix:
     - BUILD_TYPE=Release
-    - BULID_TYPE=Debug
+    - BUILD_TYPE=Debug
 
 os:
   - windows
   - osx
   - linux
   
-
+language: cpp
+name: "${os} ${BUILD_TYPE}
   
-script: echo 'executing common build script ${os} ${BUILD_TYPE}'
+script: echo 'executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}'
   
 jobs:
   - include:
@@ -28,9 +29,12 @@ jobs:
         GENERATOR="Unix Makefiles"
     - stage: first
       os: linux
+      dist: trusty
       env:
         GENERATOR="Unix Makefiles"
     - stage: second
       os: linux
+      dist: trusty
+      language: java
       script:
       - echo 'custom script on second stage'
