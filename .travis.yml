@@ -13,7 +13,9 @@ os:
 language: cpp
 name: "Build natives"
   
-script: echo 'executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}'
+script: 
+- env
+- echo 'executing common build script ${os} ${BUILD_TYPE} with ${GENERATOR}'
   
 jobs:
   - include:
